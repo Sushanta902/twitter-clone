@@ -10,13 +10,17 @@ export default function Profile() {
   const [shouldRefresh, setShouldRefresh] = useState(false);
   const apiKey = '645669647213f63d430ce6ca';
   const [tweets, setTweets] = useState([]);
+  const [alltweets, allsetTweets] = useState([]);
+  let username = 'username';
 
   const fetchTweets = async () => {
     try {
+
       const response = await axios.get(`https://react-workshop-todo.fly.dev/posts/profile/${id}`, {
         headers: { apiKey: apiKey },
       });
       setTweets(response.data);
+      allsetTweets(response.data[0].user);
     } catch (error) {
       console.log(error);
       // Handle error
@@ -26,14 +30,19 @@ export default function Profile() {
   useEffect(() => {
     fetchTweets();
   }, [shouldRefresh]);
-console.log(tweets)
+
+username = alltweets.name
+
   return (
     <>
 
 
     <div className="container">
+        
     <Nav/>
+    
       <div className="posts">
+      <h1>{username}</h1>
         {tweets.map((element) => (
           <Tweets
             key={element._id}

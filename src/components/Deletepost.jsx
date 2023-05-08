@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import Nav from './Nav';
+import Trend from './Trend';
 
 export default function Deletepost() {
   const [postId, setPostId] = useState('');
@@ -24,6 +25,9 @@ export default function Deletepost() {
   };
 
   return (
+
+    <div className="container">
+      <Nav></Nav>
     <div className="deletepost">
       <div className="container">
         <input
@@ -37,6 +41,8 @@ export default function Deletepost() {
           Delete
         </button>
       </div>
+    </div>
+    <Trend></Trend>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Tweets from '../components/Tweets';
 import { useParams } from 'react-router-dom';
+import Nav from './Nav';
+import Trend from './Trend';
 
 export default function Profile() {
     const {id} = useParams()
@@ -29,8 +31,8 @@ console.log(tweets)
     <>
 
 
-<h1>My Posts</h1>
-
+    <div className="container">
+    <Nav/>
       <div className="posts">
         {tweets.map((element) => (
           <Tweets
@@ -42,9 +44,13 @@ console.log(tweets)
             img={element.image}
             avatar={'66668423'}
             date={element.createdAt}
+            uid={element.user._id}
           />
         ))}
       </div>
+<Trend/>   
+    </div>
+   
     </>
   );
 }

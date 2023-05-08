@@ -359,6 +359,11 @@ a{
   justify-content: center;
   height: 100vh;
 }
+.deletepost
+{
+
+  width: 800px;
+}
 
 .field {
   width: 300px;

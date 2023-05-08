@@ -72,6 +72,7 @@ export default function Comment({ id }) {
             gitid={element.user.githubId}
             name={element.user.name}
             content={element.content}
+            uid={element.user._id}
           />
         ))}
       </div>

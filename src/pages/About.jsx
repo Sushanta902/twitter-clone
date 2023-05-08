@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Tweets from '../components/Tweets';
+import Nav from '../components/Nav';
+import Trend from '../components/Trend';
 
 export default function About() {
   const [shouldRefresh, setShouldRefresh] = useState(false);
@@ -26,18 +28,19 @@ console.log(tweets)
   return (
     <>
 
+<div className="container">
+
+  <Nav/>
+
+<div className="posts">
+
 <div className="back"><a href="/">Back</a></div>
     <section class="about-section">
   <h2>About Me : Sushanta Neupane</h2>
   <p>Welcome to our About page! We're delighted to introduce ourselves and share a bit about who we are, what we do, and what we stand for.</p>
   <h3>Twitter-clone</h3>
   <p>We are <span class="company-name">[myTwitter]</span>, a dynamic and innovative <span class="company-industry">[industry]</span>  committed to <span class="company-mission">[core mission]</span>.</p>
-</section>
-<br />
-<br />
-<h1>My Posts</h1>
-
-      <div className="posts">
+    </section>
         {tweets.map((element) => (
           <Tweets
             key={element._id}
@@ -50,7 +53,11 @@ console.log(tweets)
             date={element.createdAt}
           />
         ))}
-      </div>
+</div>
+
+  <Trend/>
+</div>
+
     </>
   );
 }

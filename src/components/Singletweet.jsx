@@ -22,12 +22,35 @@ export default function Singletweet() {
   const name = tweetsUser.name;
   const gitid = tweetsUser.githubId;
 
+  const [postId, setPostId] = useState('');
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`https://react-workshop-todo.fly.dev/posts/${id}`, {
+        headers: {
+          apiKey: '645669647213f63d430ce6ca', 
+        },
+      });
+
+      console.log('Post deleted successfully');
+
+      setPostId('');
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error deleting post:', error);
+   
+    }
+  };
+
+ 
+
+
 console.log(tweets)
   return (
 
 
     <>
-        <div className="back"><a href="/"> <FaBackward/> </a> </div>
+        <div className="back"><a href="/"> <FaBackward/> </a>  </div>
+        <div className="delete"  onClick={handleDelete} >Delete Post  </div>
         <div className="tweets">
             <div className="accountpp"><img src={`https://avatars.githubusercontent.com/u/${gitid}?v=4`}/></div>
             <div className="tweetBody">

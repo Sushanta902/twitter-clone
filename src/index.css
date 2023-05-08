@@ -288,6 +288,12 @@ a{
 .pp{
   display: flex;
   align-items: center;
+  margin-left: 40px;
+ 
+}
+.pp img{
+ margin-right: 20px;
+  
  
 }
 

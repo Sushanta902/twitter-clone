@@ -1,65 +1,80 @@
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentData from './CommentData';
 
-export default function Comment({id}) {
-    const [tweetContent,setTweetContent] = useState([''])
-    const [shouldRefresh, setShouldRefresh] = useState(false);
-    const upload = async() =>{
-      try{
-          await axios.post(`https://react-workshop-todo.fly.dev/posts/${id}/comments`, {
-            content: tweetContent,
-        }, {
+export default function Comment({ id }) {
+  const [tweetContent, setTweetContent] = useState('');
+  const [comments, setComments] = useState([]);
+
+  const upload = async () => {
+    try {
+      await axios.post(
+        `https://react-workshop-todo.fly.dev/posts/${id}/comments`,
+        {
+          content: tweetContent,
+        },
+        {
           headers: {
-            apiKey: "645669647213f63d430ce6ca"
+            apiKey: '645669647213f63d430ce6ca',
           },
-        });
-          
-          
-          setTweetContent("");
-          setShouldRefresh((v) => !v)
         }
-     catch (e) {
-        console.log(e);
-        alert("Error Found ")
-      }
-  }
+      );
 
-  const handleSubmit=() => (
-    upload()
-  )
+      setTweetContent('');
+      fetchComments(); // Fetch comments again after posting a new comment
+    } catch (error) {
+      console.log(error);
+      alert('Error Found');
+    }
+  };
 
-  const apiKey = "645669647213f63d430ce6ca"
-const [comment,setComments] = useState([])
-useEffect(()=>{
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(`https://react-workshop-todo.fly.dev/posts/${id}`, {
+        headers: {
+          apiKey: '645669647213f63d430ce6ca',
+        },
+      });
+      setComments(response.data.post.comments.reverse());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-},[])
-      
-const fetchComment = async () =>
-{
-    const posts = await axios.get (`https://react-workshop-todo.fly.dev/posts/${id}`,{headers:{apiKey:apiKey}});
-    setComments(posts.data.post.comments)
-} 
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
-    useEffect(()=>{
-    fetchComment();
-},[])
-console.log(comment.comments)
+  const handleSubmit = () => {
+    upload();
+  };
+
   return (
     <>
-    <div className="comment">
-    <div className="commentHandel">
+      <div className="comment">
+        <div className="commentHandel">
+          <div className="comment">
+            <input
+              value={tweetContent}
+              onChange={(e) => setTweetContent(e.target.value)}
+              placeholder="Comment"
+              type="text"
+            />
+          </div>
+          <div className="btn" onClick={handleSubmit}>
+            ✔️
+          </div>
+        </div>
 
-        <div className="comment"><input value={tweetContent} onChange={(e)=>setTweetContent(e.target.value)}  placeholder='Comment' type="text" /></div>
-        <div className="btn" onClick={()=>(handleSubmit())} >✔️</div>
-    </div>
-
-    {
-        comment.map(element=>(
-            <CommentData gitid={element.user.githubId} name={element.user.name} content={element.content} />
-
-        ))
-    }
-    </div></>
-  )
+        {comments.map((element) => (
+          <CommentData
+            key={element._id}
+            gitid={element.user.githubId}
+            name={element.user.name}
+            content={element.content}
+          />
+        ))}
+      </div>
+    </>
+  );
 }

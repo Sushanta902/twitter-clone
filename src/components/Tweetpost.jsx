@@ -1,32 +1,32 @@
-import {useState,useEffect} from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
-export default function Tweetpost() {
 
-    const [tweetContent,setTweetContent] = useState([''])
-    const [shouldRefresh, setShouldRefresh] = useState(false);
-    const upload = async() =>{
-      try{
-          await axios.post("https://react-workshop-todo.fly.dev/posts/",{
-            content: tweetContent,
-            image: 'https://qph.cf2.quoracdn.net/main-qimg-c1c0b1d2e6aaeda43827d138e5964008'
-          },
-          {
-            headers:{apiKey:'645669647213f63d430ce6ca'}
-          }
-          
-          )
-          setTweetContent("");
-          setShouldRefresh((v) => !v)
+export default function Tweetpost({ setShouldRefresh }) {
+  const [tweetContent, setTweetContent] = useState('');
+
+  const upload = async () => {
+    try {
+      await axios.post(
+        'https://react-workshop-todo.fly.dev/posts/',
+        {
+          content: tweetContent,
+          image: 'https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_960_720.png',
+        },
+        {
+          headers: { apiKey: '645669647213f63d430ce6ca' },
         }
-     catch (e) {
-        console.log(e);
-        alert("Error Found ")
-      }
-  }
+      );
+      setTweetContent('');
+      setShouldRefresh(true);
+    } catch (error) {
+      console.log(error);
+      alert('Error Found');
+    }
+  };
 
-  const handleSubmit=() => (
-    upload()
-  )
+const handleSubmit= ()=>{
+    upload();
+}
 
   return (
     <>
@@ -39,3 +39,4 @@ export default function Tweetpost() {
     </>
   )
 }
+

@@ -9,8 +9,8 @@ export default function Tweetpost({ setShouldRefresh }) {
       await axios.post(
         'https://react-workshop-todo.fly.dev/posts/',
         {
-          content: tweetContent,
-          image: 'https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_960_720.png',
+          content: tweetContent.split('@')[0],
+          image: tweetContent.split('@')[1],
         },
         {
           headers: { apiKey: '645669647213f63d430ce6ca' },
@@ -33,7 +33,7 @@ const handleSubmit= ()=>{
     
     <div className="tweetpost">
         
-        <input className='postContainer' value={tweetContent} onChange={(e)=>setTweetContent(e.target.value)}    placeholder='What is happeneing?' id="" rows="10"/>
+        <input className='postContainer' value={tweetContent} onChange={(e)=>setTweetContent(e.target.value)}    placeholder='What is happeneing? content@imglink' id="" rows="10"/>
         <button className='tweetBtn' onClick={()=>(handleSubmit())} >Tweet</button>
     </div>
     </>

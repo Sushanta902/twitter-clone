@@ -330,3 +330,27 @@ a{
 .company-mission {
   color: #007bff;
 }
+
+
+.deletepost .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.field {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

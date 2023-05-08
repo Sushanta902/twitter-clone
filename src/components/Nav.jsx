@@ -7,8 +7,8 @@ export default function Nav() {
     <>
     <div className="nav">
       <div className="logo"  ><FaTwitter/></div>
-      <div className="navItem"><FaHome/> Home</div>
-      <div className="navItem"><ImProfile/> About</div>
+      <div className="navItem"><FaHome/> <a href="/">Home</a> </div>
+      <div className="navItem"><ImProfile/> <a href="/about"> About </a></div>
     </div>
     </>
   )

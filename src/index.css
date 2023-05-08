@@ -13,7 +13,7 @@
 
 *{
   margin: 0%;
-  transition: .3s;
+  transition: .2s;
 }
 
 .container{
@@ -289,4 +289,38 @@ a{
   display: flex;
   align-items: center;
  
+}
+
+
+.about-section {
+  background-color: #383434;
+  padding: 20px;
+}
+
+.about-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about-section h3 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.company-name {
+  font-weight: bold;
+}
+
+.company-industry {
+  font-style: italic;
+}
+
+.company-mission {
+  color: #007bff;
 }

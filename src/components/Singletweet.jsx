@@ -52,7 +52,7 @@ console.log(tweets)
         <div className="back"><a href="/"> <FaBackward/> </a>  </div>
         <div className="delete"  onClick={handleDelete} >Delete Post  </div>
         <div className="tweets">
-            <div className="accountpp"><img src={`https://avatars.githubusercontent.com/u/${gitid}?v=4`}/></div>
+            <div className="accountpp" onClick={()=>{window.location.href=`https://github.com/${name}`}}><img src={`https://avatars.githubusercontent.com/u/${gitid}?v=4`}/></div>
             <div className="tweetBody">
                 <div className="tweetUser">{name}</div> 
                 <div className="tweetContent">{tweets.content}</div>
@@ -61,7 +61,7 @@ console.log(tweets)
         </div>
   
 
-        <Comment id={id}></Comment>
+        <Comment id={id} name ={name}></Comment>
     </>
 
 

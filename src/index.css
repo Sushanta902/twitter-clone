@@ -206,9 +206,23 @@ color: #2ea3f1;
   transition: .5s;
   font-size: 1.3rem;
 }
+
+
 .rxn:hover
 {
   background-color: #2ea3f142;
+}
+
+.like
+{
+  background-color:red;
+  width: 20px;
+  height: 20px;
+}
+
+.rxn .unlike
+{
+  background-color:white;
 }
 
 .commentHandel
@@ -367,4 +381,12 @@ a{
   border-radius: 50px;
   display: flex;
   align-items: center;
+}
+
+.accountpp
+{
+  cursor: pointer;
+}
+.pp{
+  cursor: pointer;
 }

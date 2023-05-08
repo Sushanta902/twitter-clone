@@ -1,7 +1,7 @@
 import React from 'react'
-import { FaHome, FaTwitter, FaCross} from "react-icons/fa";
-import { ImProfile} from "react-icons/im";
-import { FiDelete} from "react-icons/Fi";
+import {FaHome, FaTwitter} from "react-icons/fa";
+import {ImProfile} from "react-icons/im";
+import {FiDelete} from "react-icons/Fi";
 
 export default function Nav() {
   return (

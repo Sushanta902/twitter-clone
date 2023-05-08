@@ -71,6 +71,9 @@
 {
   overflow-y: scroll;
 }
+.posts::-webkit-scrollbar{
+  display: none;
+}
 
 .tweetpost
 {

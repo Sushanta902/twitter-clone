@@ -38,6 +38,7 @@ export default function Posts() {
             img={element.image}
             avatar={element.user.githubId}
             date={element.createdAt}
+            uid = {element.user._id}
           />
         ))}
       </div>

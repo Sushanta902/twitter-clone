@@ -33,7 +33,7 @@ export default function Posts({apiKey}) {
   return (
     <>
       <div className="posts">
-        <Tweetpost placeholder={placeholder} setShouldRefresh={setShouldRefresh} />
+        <Tweetpost apiKey={apiKey} placeholder={placeholder} setShouldRefresh={setShouldRefresh} />
         {tweets.map((element) => (
           <Tweets
             key={element._id}

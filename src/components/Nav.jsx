@@ -45,7 +45,7 @@ export default function Nav({apiKey}) {
       <div className="navItem"><FaHome/> <a href="/">Home</a> </div>
       <div className="navItem"><ImProfile/> <a href="/about"> About </a></div>
       <div className="navItem"><FiDelete/> <a href="/delete"> Delete Post </a></div>
-      <div className="navItem"><FiActivity/> <a href="/login"> Logout</a></div>
+      <div className="navItem"><FiActivity/> <a href="/login"> Login</a></div>
     </div>
     </>
   )

@@ -8,8 +8,8 @@ import Singletweet from './components/Singletweet';
 import Login from './pages/Login';
 
 export default function App() {
-let apiKey = "645669647213f63d430ce6ca"
-localStorage.getItem('apiKey')
+let apiKey = localStorage.getItem('apiKey')
+
 
 
   return (

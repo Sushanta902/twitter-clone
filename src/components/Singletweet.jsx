@@ -5,14 +5,16 @@ import axios from 'axios'
 import { FaBackward} from "react-icons/fa";
 
 
-export default function Singletweet() {
+export default function Singletweet({apiKey}) {
     const {id} = useParams()
+  // const apiKey = '645669647213f63d430ce6ca'
+
     const [tweets,setTweets] =useState('')
     const [tweetsUser,setTweetsUser] =useState('')
 
         const fetchTweets = async () =>
          {
-           const posts = await axios.get(`https://react-workshop-todo.fly.dev/posts/${id}`,{headers:{apiKey:"645669647213f63d430ce6ca"}});
+           const posts = await axios.get(`https://react-workshop-todo.fly.dev/posts/${id}`,{headers:{apiKey:apiKey}});
            setTweets(posts.data.post)
            setTweetsUser(posts.data.post.user)
          } 
@@ -63,7 +65,7 @@ console.log(tweets)
         </div>
   
 
-        <Comment id={id} name ={name}></Comment>
+        <Comment id={id} name ={name} apiKey={apiKey} ></Comment>
     </>
 
 

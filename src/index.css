@@ -130,6 +130,7 @@
 
 .tweetImg{
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .tweetImg img{
@@ -196,7 +197,8 @@ color: #2ea3f1;
 .reaction
 {
   display: flex;
-  width: 100%;
+  width: 500px;
+
   justify-content: space-around;
   align-items: center;
   padding: 10px;
@@ -369,6 +371,13 @@ a{
   width: 300px;
   padding: 10px;
   font-size: 16px;
+  border-radius: 50px;
+  padding-left: 20px;
+  border: none;
+}
+.field:hover
+{
+  box-shadow: 0 0 10px rgb(190, 189, 189);
 }
 
 .delete-btn {
@@ -378,6 +387,31 @@ a{
   color: white;
   border: none;
   cursor: pointer;
+  box-shadow: 0 0 10px rgb(224, 86, 86);
+
+}
+
+.delete-btn:hover
+{
+  box-shadow: 0 0 10px rgb(224, 86, 86);
+
+}
+
+
+.primary-btn{
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: green;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.primary-btn:hover
+{
+  box-shadow: 0 0 10px rgba(0, 255, 85, 0.5);
+
 }
 
 
@@ -385,13 +419,14 @@ a{
 {
   cursor: pointer;
   margin-left: 30px;
-  padding: 10px;
+  padding: 15px;
   background-color: #c82333;
-  padding-right: 5px;
+
   width: 100px;
   border-radius: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .accountpp
@@ -400,4 +435,10 @@ a{
 }
 .pp{
   cursor: pointer;
+}
+
+.ppHome
+{
+  border-radius: 50%;
+  width: 80px;
 }

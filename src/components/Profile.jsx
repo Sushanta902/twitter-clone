@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 import Nav from './Nav';
 import Trend from './Trend';
 
-export default function Profile() {
+export default function Profile({apiKey}) {
     const {id} = useParams()
   const [shouldRefresh, setShouldRefresh] = useState(false);
-  const apiKey = '645669647213f63d430ce6ca';
+  // const apiKey = '645669647213f63d430ce6ca';
   const [tweets, setTweets] = useState([]);
   const [alltweets, allsetTweets] = useState([]);
   let username = 'username';
@@ -32,6 +32,9 @@ export default function Profile() {
   }, [shouldRefresh]);
 
 username = alltweets.name
+let gitid = "6666d6"
+gitid = (alltweets.githubId)
+
 
   return (
     <>
@@ -39,25 +42,26 @@ username = alltweets.name
 
     <div className="container">
         
-    <Nav/>
+    <Nav apiKey={apiKey} />
     
       <div className="posts">
-      <h1>{username}</h1>
+      <h1 style={{textAlign:"center",margin:"20px"}}>{username}</h1>
         {tweets.map((element) => (
           <Tweets
+            apiKey={apiKey}
             key={element._id}
             id={element._id}
             setShouldRefresh={setShouldRefresh}
             name={element.user.name}
             data={element.content}
             img={element.image}
-            avatar={'66668423'}
+            avatar={gitid}
             date={element.createdAt}
             uid={element.user._id}
           />
         ))}
       </div>
-<Trend/>   
+<Trend apiKey={apiKey}/>   
     </div>
    
     </>

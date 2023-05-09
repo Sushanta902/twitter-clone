@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentData from './CommentData';
 
-export default function Comment({ id }) {
+export default function Comment({ id,apiKey }) {
   const [tweetContent, setTweetContent] = useState('');
   const [comments, setComments] = useState([]);
+  // const apiKey = '645669647213f63d430ce6ca'
+
 
   const upload = async () => {
     try {
@@ -15,7 +17,7 @@ export default function Comment({ id }) {
         },
         {
           headers: {
-            apiKey: '645669647213f63d430ce6ca',
+            apiKey: apiKey,
           },
         }
       );

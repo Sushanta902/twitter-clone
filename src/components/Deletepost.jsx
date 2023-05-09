@@ -3,14 +3,16 @@ import axios from 'axios';
 import Nav from './Nav';
 import Trend from './Trend';
 
-export default function Deletepost() {
+export default function Deletepost({apiKey}) {
   const [postId, setPostId] = useState('');
+  // const apiKey = '645669647213f63d430ce6ca'
+
 
   const handleDelete = async () => {
     try {
       await axios.delete(`https://react-workshop-todo.fly.dev/posts/${postId}`, {
         headers: {
-          apiKey: '645669647213f63d430ce6ca', 
+          apiKey: apiKey, 
         },
       });
 
@@ -27,7 +29,7 @@ export default function Deletepost() {
   return (
 
     <div className="container">
-      <Nav></Nav>
+      <Nav apiKey={apiKey}/>
     <div className="deletepost">
       <div className="container">
         <input
@@ -42,7 +44,7 @@ export default function Deletepost() {
         </button>
       </div>
     </div>
-    <Trend></Trend>
+    <Trend apiKey={apiKey} />
     </div>
   );
 }

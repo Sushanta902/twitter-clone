@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Tweetpost({ setShouldRefresh }) {
+export default function Tweetpost({ placeholder, setShouldRefresh , apiKey}) {
   const [tweetContent, setTweetContent] = useState('');
+  // const apiKey = '645669647213f63d430ce6ca'
+
 
   const upload = async () => {
     try {
@@ -13,14 +15,15 @@ export default function Tweetpost({ setShouldRefresh }) {
           image: tweetContent.split('@')[1],
         },
         {
-          headers: { apiKey: '645669647213f63d430ce6ca' },
+          headers: { apiKey: apiKey },
         }
       );
       setTweetContent('');
       setShouldRefresh(true);
     } catch (error) {
       console.log(error);
-      alert('Error Found');
+      window.location.href = '/login';
+
     }
   };
 
@@ -33,7 +36,7 @@ const handleSubmit= ()=>{
     
     <div className="tweetpost">
         
-        <input className='postContainer' value={tweetContent} onChange={(e)=>setTweetContent(e.target.value)}    placeholder='What is happeneing? content@imglink' id="" rows="10"/>
+        <input className='postContainer' value={tweetContent} onChange={(e)=>setTweetContent(e.target.value)}    placeholder={placeholder} id="" rows="10"/>
         <button className='tweetBtn' onClick={()=>(handleSubmit())} >Tweet</button>
     </div>
     </>

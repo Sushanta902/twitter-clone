@@ -5,17 +5,29 @@ import Profile from './components/Profile';
 import Deletepost from './components/Deletepost';
 import { Route,BrowserRouter,Routes } from "react-router-dom";
 import Singletweet from './components/Singletweet';
+import Login from './pages/Login';
 
 export default function App() {
+let apiKey = "645669647213f63d430ce6ca"
+
+try {
+  
+  apiKey =localStorage.getItem('apiKey')
+} catch (error) {
+  console.log("error geting api ")
+  localStorage.setItem('apiKey', apiKey)
+}
+
   return (
     <>
   <BrowserRouter>
   <Routes>
-      <Route exact path="/" element={<Home/>}/>  
-      <Route  path="/about" element={  <About/>}/>  
-      <Route  path="/delete" element={  <Deletepost/>}/>  
-      <Route path="/posts/:id" element={  <Singletweet/>}/>  
-      <Route path="/posts/profile/:id" element={  <Profile/>}/>  
+      <Route exact path="/" element={<Home apiKey={apiKey}/>}/>  
+      <Route  path="/about" element={  <About apiKey={apiKey}/>}/>  
+      <Route  path="/delete" element={  <Deletepost apiKey={apiKey}/>}/>  
+      <Route  path="/login" element={  <Login apiKey={apiKey} />}/>  
+      <Route path="/posts/:id" element={  <Singletweet apiKey={apiKey} />}/>  
+      <Route path="/posts/profile/:id" element={  <Profile apiKey={apiKey} />}/>  
       
   </Routes>
   </BrowserRouter>

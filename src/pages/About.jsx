@@ -4,9 +4,11 @@ import Tweets from '../components/Tweets';
 import Nav from '../components/Nav';
 import Trend from '../components/Trend';
 
-export default function About() {
+export default function About({apiKey}) {
+
   const [shouldRefresh, setShouldRefresh] = useState(false);
-  const apiKey = '645669647213f63d430ce6ca';
+  const [fullname, setFullname] = useState('');
+  // const apiKey = '645669647213f63d430ce6ca';
   const [tweets, setTweets] = useState([]);
 
   const fetchTweets = async () => {
@@ -15,6 +17,7 @@ export default function About() {
         headers: { apiKey: apiKey },
       });
       setTweets(response.data);
+      setFullname(response.data[0].user.fullname);
     } catch (error) {
       console.log(error);
       // Handle error
@@ -24,24 +27,25 @@ export default function About() {
   useEffect(() => {
     fetchTweets();
   }, [shouldRefresh]);
-console.log(tweets)
+console.log(fullname)
   return (
     <>
 
 <div className="container">
 
-  <Nav/>
+  <Nav apiKey={apiKey} />
 
 <div className="posts">
 
 <div className="back"><a href="/">Back</a></div>
     <section class="about-section">
-  <h2>About Me : Sushanta Neupane</h2>
+  <h2>About Me : {fullname}</h2>
   <p>Welcome to my About page! We're delighted to introduce ourselves and share a bit about who I am and my timeleine.</p>
   
     </section>
         {tweets.map((element) => (
           <Tweets
+            apiKey={apiKey}
             key={element._id}
             id={element._id}
             setShouldRefresh={setShouldRefresh}
@@ -55,7 +59,7 @@ console.log(tweets)
         ))}
 </div>
 
-  <Trend/>
+  <Trend apiKey={apiKey} />
 </div>
 
     </>

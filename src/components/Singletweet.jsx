@@ -31,7 +31,7 @@ export default function Singletweet({apiKey}) {
     try {
       await axios.delete(`https://react-workshop-todo.fly.dev/posts/${id}`, {
         headers: {
-          apiKey: '645669647213f63d430ce6ca', 
+          apiKey: {apiKey}, 
         },
       });
 

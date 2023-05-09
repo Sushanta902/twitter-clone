@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Profile from './components/Profile';
@@ -10,6 +10,11 @@ import Login from './pages/Login';
 export default function App() {
 let apiKey = localStorage.getItem('apiKey')
 
+useEffect(() => {
+  apiKey = localStorage.getItem('apiKey')
+
+
+}, [])
 
 
   return (

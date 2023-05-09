@@ -20,7 +20,7 @@ export default function Posts({apiKey}) {
 
       setTweets(response.data);
     } catch (error) {
-      setErrormsg("Make sure you have enter right api key ")
+      setErrormsg("Make sure you login with right api key ")
       console.log(error);
       // Handle error
     }

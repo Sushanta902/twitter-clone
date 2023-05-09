@@ -9,14 +9,8 @@ import Login from './pages/Login';
 
 export default function App() {
 let apiKey = "645669647213f63d430ce6ca"
+localStorage.getItem('apiKey')
 
-try {
-  
-  apiKey =localStorage.getItem('apiKey')
-} catch (error) {
-  console.log("error geting api ")
-  localStorage.setItem('apiKey', apiKey)
-}
 
   return (
     <>
